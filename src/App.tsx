@@ -8090,6 +8090,8 @@ function HomePage({
 
       <OSSection t={t} />
 
+      <WebsiteBuildSection t={t} navigate={navigate} />
+
       <FinalCTA t={t} navigate={navigate} />
     </>
   );
@@ -8914,6 +8916,319 @@ function BookDemoPage({ t, language }: { t: CopyPack; language: Lang }) {
 /* ============================================================
    KONARA OS
    ============================================================ */
+
+
+/* ============================================================
+   KONARA WEB — WEBSITE BUILDING
+   ============================================================ */
+
+type WebsiteSectionCopy = {
+  eyebrow: string;
+  title: string;
+  text: string;
+  cta: string;
+};
+
+const WEBSITE_COPY: Record<Lang, WebsiteSectionCopy> = {
+  en: {
+    eyebrow: "KONARA WEB",
+    title: "We can build your website too.",
+    text: "KONARA designs and builds responsive websites tailored to your brand, from a clean business site to a more advanced digital experience, ready to connect with your automation systems.",
+    cta: "Start a website project",
+  },
+  de: {
+    eyebrow: "KONARA WEB",
+    title: "Wir können auch Ihre Website bauen.",
+    text: "KONARA entwirft und entwickelt responsive Websites, die zu Ihrer Marke passen – von einer klaren Unternehmensseite bis zu einem fortschrittlichen digitalen Erlebnis, bereit für die Verbindung mit Ihren Automatisierungssystemen.",
+    cta: "Website-Projekt starten",
+  },
+  fr: {
+    eyebrow: "KONARA WEB",
+    title: "Nous pouvons aussi créer votre site web.",
+    text: "KONARA conçoit et développe des sites web responsives adaptés à votre marque, d’un site professionnel épuré à une expérience numérique plus avancée, prêts à se connecter à vos systèmes d’automatisation.",
+    cta: "Lancer un projet web",
+  },
+  nl: {
+    eyebrow: "KONARA WEB",
+    title: "We kunnen ook uw website bouwen.",
+    text: "KONARA ontwerpt en bouwt responsieve websites die bij uw merk passen, van een strakke bedrijfssite tot een geavanceerdere digitale ervaring, klaar om te koppelen aan uw automatiseringssystemen.",
+    cta: "Start een websiteproject",
+  },
+  es: {
+    eyebrow: "KONARA WEB",
+    title: "También podemos crear tu sitio web.",
+    text: "KONARA diseña y desarrolla sitios web adaptables a tu marca, desde una web empresarial limpia hasta una experiencia digital más avanzada, lista para conectarse con tus sistemas de automatización.",
+    cta: "Iniciar un proyecto web",
+  },
+  pt: {
+    eyebrow: "KONARA WEB",
+    title: "Também podemos criar o seu site.",
+    text: "A KONARA projeta e desenvolve sites responsivos alinhados com a sua marca, desde um site empresarial limpo até uma experiência digital mais avançada, pronta para se ligar aos seus sistemas de automação.",
+    cta: "Iniciar um projeto de site",
+  },
+  it: {
+    eyebrow: "KONARA WEB",
+    title: "Possiamo realizzare anche il tuo sito web.",
+    text: "KONARA progetta e sviluppa siti web responsive su misura per il tuo brand, da un sito aziendale essenziale a un’esperienza digitale più avanzata, pronta a collegarsi ai tuoi sistemi di automazione.",
+    cta: "Avvia un progetto web",
+  },
+  pl: {
+    eyebrow: "KONARA WEB",
+    title: "Możemy również stworzyć Twoją stronę internetową.",
+    text: "KONARA projektuje i tworzy responsywne strony dopasowane do Twojej marki — od prostej strony firmowej po bardziej zaawansowane doświadczenie cyfrowe, gotowe do połączenia z systemami automatyzacji.",
+    cta: "Rozpocznij projekt strony",
+  },
+  cs: {
+    eyebrow: "KONARA WEB",
+    title: "Můžeme vám také vytvořit web.",
+    text: "KONARA navrhuje a vytváří responzivní weby na míru vaší značce — od čistého firemního webu po pokročilejší digitální prostředí připravené na propojení s automatizačními systémy.",
+    cta: "Zahájit webový projekt",
+  },
+  sk: {
+    eyebrow: "KONARA WEB",
+    title: "Môžeme vám vytvoriť aj webovú stránku.",
+    text: "KONARA navrhuje a vytvára responzívne weby prispôsobené vašej značke — od čistej firemnej stránky po pokročilejší digitálny zážitok pripravený na prepojenie s automatizačnými systémami.",
+    cta: "Začať webový projekt",
+  },
+  hu: {
+    eyebrow: "KONARA WEB",
+    title: "A weboldalát is elkészítjük.",
+    text: "A KONARA reszponzív, márkájához illő weboldalakat tervez és készít, az egyszerű üzleti oldaltól a fejlettebb digitális élményig, készen az automatizálási rendszerekkel való összekapcsolásra.",
+    cta: "Weboldalprojekt indítása",
+  },
+  ro: {
+    eyebrow: "KONARA WEB",
+    title: "Vă putem construi și site-ul.",
+    text: "KONARA proiectează și dezvoltă site-uri responsive adaptate brandului dvs., de la un site de afaceri curat la o experiență digitală mai avansată, gata să se conecteze la sistemele de automatizare.",
+    cta: "Pornește un proiect web",
+  },
+  bg: {
+    eyebrow: "KONARA WEB",
+    title: "Можем да изградим и вашия уебсайт.",
+    text: "KONARA проектира и изгражда адаптивни уебсайтове, съобразени с вашата марка — от изчистен бизнес сайт до по-развито дигитално изживяване, готово за свързване с вашите системи за автоматизация.",
+    cta: "Започнете уеб проект",
+  },
+  el: {
+    eyebrow: "KONARA WEB",
+    title: "Μπορούμε να κατασκευάσουμε και τον ιστότοπό σας.",
+    text: "Η KONARA σχεδιάζει και κατασκευάζει responsive ιστοτόπους προσαρμοσμένους στο brand σας, από έναν καθαρό εταιρικό ιστότοπο έως μια πιο προηγμένη ψηφιακή εμπειρία, έτοιμη να συνδεθεί με τα συστήματα αυτοματοποίησής σας.",
+    cta: "Ξεκινήστε έργο ιστοτόπου",
+  },
+  tr: {
+    eyebrow: "KONARA WEB",
+    title: "Web sitenizi de oluşturabiliriz.",
+    text: "KONARA, markanıza uygun duyarlı web siteleri tasarlar ve geliştirir; sade bir işletme sitesinden daha gelişmiş bir dijital deneyime kadar, otomasyon sistemlerinizle bağlantıya hazır.",
+    cta: "Web sitesi projesi başlat",
+  },
+  sv: {
+    eyebrow: "KONARA WEB",
+    title: "Vi kan även bygga din webbplats.",
+    text: "KONARA designar och bygger responsiva webbplatser anpassade till ditt varumärke, från en ren företagssida till en mer avancerad digital upplevelse, redo att kopplas till dina automationssystem.",
+    cta: "Starta ett webbprojekt",
+  },
+  no: {
+    eyebrow: "KONARA WEB",
+    title: "Vi kan også bygge nettstedet ditt.",
+    text: "KONARA designer og bygger responsive nettsteder tilpasset merkevaren din, fra en ren bedriftsside til en mer avansert digital opplevelse, klar til å kobles til automasjonssystemene dine.",
+    cta: "Start et nettstedsprosjekt",
+  },
+  da: {
+    eyebrow: "KONARA WEB",
+    title: "Vi kan også bygge din hjemmeside.",
+    text: "KONARA designer og bygger responsive websites tilpasset dit brand, fra en enkel virksomhedsside til en mere avanceret digital oplevelse, klar til at blive koblet til dine automatiseringssystemer.",
+    cta: "Start et websiteprojekt",
+  },
+  fi: {
+    eyebrow: "KONARA WEB",
+    title: "Voimme rakentaa myös verkkosivustosi.",
+    text: "KONARA suunnittelee ja rakentaa brändillesi sopivia responsiivisia verkkosivustoja selkeästä yrityssivusta edistyneempään digitaaliseen kokemukseen, valmiina yhdistettäväksi automaatiojärjestelmiisi.",
+    cta: "Aloita verkkosivuprojekti",
+  },
+  uk: {
+    eyebrow: "KONARA WEB",
+    title: "Ми також можемо створити ваш вебсайт.",
+    text: "KONARA проєктує та створює адаптивні вебсайти під ваш бренд — від лаконічного бізнес-сайту до більш просунутого цифрового досвіду, готового до підключення до систем автоматизації.",
+    cta: "Розпочати вебпроєкт",
+  },
+  ar: {
+    eyebrow: "KONARA WEB",
+    title: "يمكننا أيضًا بناء موقعك الإلكتروني.",
+    text: "تصمم KONARA وتبني مواقع متجاوبة تناسب علامتك التجارية، من موقع أعمال أنيق إلى تجربة رقمية أكثر تطورًا، وجاهزة للاتصال بأنظمة الأتمتة لديك.",
+    cta: "ابدأ مشروع موقع إلكتروني",
+  },
+  hi: {
+    eyebrow: "KONARA WEB",
+    title: "हम आपकी वेबसाइट भी बना सकते हैं।",
+    text: "KONARA आपके ब्रांड के अनुसार responsive वेबसाइटें डिज़ाइन और बनाता है—एक साफ़ बिज़नेस साइट से लेकर अधिक उन्नत डिजिटल अनुभव तक—जो आपके automation systems से जुड़ने के लिए तैयार हों।",
+    cta: "वेबसाइट प्रोजेक्ट शुरू करें",
+  },
+  ur: {
+    eyebrow: "KONARA WEB",
+    title: "ہم آپ کی ویب سائٹ بھی بنا سکتے ہیں۔",
+    text: "KONARA آپ کے برانڈ کے مطابق ریسپانسیو ویب سائٹس ڈیزائن اور بناتا ہے، ایک صاف بزنس سائٹ سے لے کر زیادہ جدید ڈیجیٹل تجربے تک، جو آپ کے آٹومیشن سسٹمز سے جڑنے کے لیے تیار ہوں۔",
+    cta: "ویب سائٹ پروجیکٹ شروع کریں",
+  },
+  bn: {
+    eyebrow: "KONARA WEB",
+    title: "আমরা আপনার ওয়েবসাইটও তৈরি করতে পারি।",
+    text: "KONARA আপনার ব্র্যান্ড অনুযায়ী রেসপনসিভ ওয়েবসাইট ডিজাইন ও তৈরি করে—পরিষ্কার ব্যবসায়িক সাইট থেকে আরও উন্নত ডিজিটাল অভিজ্ঞতা পর্যন্ত—যা আপনার অটোমেশন সিস্টেমের সঙ্গে যুক্ত হওয়ার জন্য প্রস্তুত।",
+    cta: "ওয়েবসাইট প্রকল্প শুরু করুন",
+  },
+  ms: {
+    eyebrow: "KONARA WEB",
+    title: "Kami juga boleh membina laman web anda.",
+    text: "KONARA mereka bentuk dan membina laman web responsif yang sesuai dengan jenama anda, daripada laman perniagaan yang kemas hingga pengalaman digital yang lebih maju, sedia disambungkan kepada sistem automasi anda.",
+    cta: "Mulakan projek laman web",
+  },
+  id: {
+    eyebrow: "KONARA WEB",
+    title: "Kami juga dapat membuat situs web Anda.",
+    text: "KONARA merancang dan membangun situs web responsif yang sesuai dengan merek Anda, dari situs bisnis yang bersih hingga pengalaman digital yang lebih canggih, siap terhubung dengan sistem otomatisasi Anda.",
+    cta: "Mulai proyek situs web",
+  },
+  tl: {
+    eyebrow: "KONARA WEB",
+    title: "Maaari rin naming gawin ang website mo.",
+    text: "Nagdidisenyo at gumagawa ang KONARA ng responsive na mga website na akma sa brand mo, mula sa malinis na business site hanggang sa mas advanced na digital experience, handang ikonekta sa automation systems mo.",
+    cta: "Magsimula ng website project",
+  },
+  ja: {
+    eyebrow: "KONARA WEB",
+    title: "ウェブサイト制作もお任せください。",
+    text: "KONARAは、シンプルなビジネスサイトから高度なデジタル体験まで、ブランドに合わせたレスポンシブWebサイトを設計・制作し、自動化システムとの連携にも対応できる形で構築します。",
+    cta: "Webサイト制作を始める",
+  },
+  ko: {
+    eyebrow: "KONARA WEB",
+    title: "웹사이트도 제작해 드립니다.",
+    text: "KONARA는 깔끔한 비즈니스 사이트부터 더 발전된 디지털 경험까지, 브랜드에 맞는 반응형 웹사이트를 설계하고 제작하며 자동화 시스템과 연결할 수 있도록 준비합니다.",
+    cta: "웹사이트 프로젝트 시작",
+  },
+  "zh-CN": {
+    eyebrow: "KONARA WEB",
+    title: "我们也可以为您打造网站。",
+    text: "KONARA 可根据您的品牌设计并构建响应式网站，从简洁的企业网站到更高级的数字体验，并可与您的自动化系统连接。",
+    cta: "开始网站项目",
+  },
+  "zh-TW": {
+    eyebrow: "KONARA WEB",
+    title: "我們也可以為您打造網站。",
+    text: "KONARA 可依照您的品牌設計並打造響應式網站，從簡潔的企業網站到更進階的數位體驗，並可與您的自動化系統串接。",
+    cta: "開始網站專案",
+  },
+  th: {
+    eyebrow: "KONARA WEB",
+    title: "เราสามารถสร้างเว็บไซต์ให้คุณได้เช่นกัน",
+    text: "KONARA ออกแบบและสร้างเว็บไซต์แบบ responsive ให้เหมาะกับแบรนด์ของคุณ ตั้งแต่เว็บไซต์ธุรกิจที่เรียบสะอาดไปจนถึงประสบการณ์ดิจิทัลที่ซับซ้อนขึ้น พร้อมเชื่อมต่อกับระบบอัตโนมัติของคุณ",
+    cta: "เริ่มโปรเจกต์เว็บไซต์",
+  },
+  vi: {
+    eyebrow: "KONARA WEB",
+    title: "Chúng tôi cũng có thể xây dựng website cho bạn.",
+    text: "KONARA thiết kế và xây dựng website responsive phù hợp với thương hiệu của bạn, từ website doanh nghiệp gọn gàng đến trải nghiệm số nâng cao hơn, sẵn sàng kết nối với các hệ thống tự động hóa.",
+    cta: "Bắt đầu dự án website",
+  },
+};
+
+function websiteLanguageFromCopy(t: CopyPack): Lang {
+  const match = (Object.entries(COPY) as Array<[Lang, CopyPack]>).find(
+    ([, pack]) => pack === t,
+  );
+
+  return match?.[0] ?? "en";
+}
+
+function WebsiteBuildSection({
+  t,
+  navigate,
+}: {
+  t: CopyPack;
+  navigate: (route: Route) => void;
+}) {
+  const language = websiteLanguageFromCopy(t);
+  const copy = WEBSITE_COPY[language] ?? WEBSITE_COPY.en;
+
+  return (
+    <section className="section websiteBuildSection">
+      <div className="container">
+        <Reveal>
+          <div className="websiteBuildPanel">
+            <div className="websiteBuildCopy">
+              <Eyebrow>{copy.eyebrow}</Eyebrow>
+
+              <h2>{copy.title}</h2>
+
+              <p>{copy.text}</p>
+
+              <button
+                className="primaryButton heroButton"
+                onClick={() => navigate("/contact")}
+              >
+                {copy.cta}
+                <span>→</span>
+              </button>
+            </div>
+
+            <div className="websiteBuildVisual" aria-hidden="true" dir="ltr">
+              <div className="webBrowser">
+                <div className="webBrowserTop">
+                  <div>
+                    <i />
+                    <i />
+                    <i />
+                  </div>
+
+                  <span>KONARA</span>
+                </div>
+
+                <div className="webBrowserCanvas">
+                  <div className="webPreviewNav">
+                    <Logo />
+                    <span />
+                  </div>
+
+                  <div className="webPreviewHero">
+                    <div>
+                      <span />
+                      <strong />
+                      <strong />
+                      <p />
+                    </div>
+
+                    <div className="webPreviewGraphic">K</div>
+                  </div>
+
+                  <div className="webPreviewCards">
+                    <span />
+                    <span />
+                    <span />
+                  </div>
+                </div>
+              </div>
+
+              <motion.div
+                className="webMobilePreview"
+                animate={{
+                  y: [0, -7, 0],
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              >
+                <div>K</div>
+                <span />
+                <span />
+                <i />
+              </motion.div>
+            </div>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
 
 function OSSection({ t }: { t: CopyPack }) {
   const ai = splitCopy(t.solutions.products[0])[0];
@@ -13464,6 +13779,23 @@ html[dir="rtl"] .footerLinks{
   }
 
   .founderButton{
+    display:inline-flex;
+    min-height:34px;
+    padding:0 10px;
+    border-radius:10px;
+    font-size:9px;
+    white-space:nowrap;
+  }
+  
+  .comingNav{
+    gap:8px;
+  }
+  
+  .comingNavRight{
+    gap:6px;
+  }
+  
+  .comingHeader .konaraWord{
     display:none;
   }
 
@@ -13568,6 +13900,494 @@ html[dir="rtl"] .footerLinks{
     animation-duration:.01ms!important;
     animation-iteration-count:1!important;
     transition-duration:.01ms!important;
+  }
+}
+
+
+/* ============================================================
+   KONARA WEB — WEBSITE BUILDING
+   ============================================================ */
+
+.websiteBuildPanel{
+  position:relative;
+  overflow:hidden;
+  padding:56px;
+  display:grid;
+  grid-template-columns:
+    minmax(0,.9fr)
+    minmax(0,1.1fr);
+  align-items:center;
+  gap:70px;
+  border:
+    1px solid rgba(87,137,244,.3);
+  border-radius:24px;
+  background:
+    radial-gradient(
+      circle at 85% 20%,
+      rgba(37,99,235,.16),
+      transparent 37%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(12,23,49,.94),
+      rgba(6,11,24,.98)
+    );
+}
+
+.websiteBuildPanel::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background-image:
+    linear-gradient(
+      rgba(255,255,255,.022) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255,255,255,.022) 1px,
+      transparent 1px
+    );
+  background-size:38px 38px;
+  mask-image:
+    linear-gradient(
+      90deg,
+      transparent,
+      #000
+    );
+}
+
+.websiteBuildCopy{
+  position:relative;
+  z-index:3;
+  min-width:0;
+}
+
+.websiteBuildCopy h2{
+  max-width:610px;
+  margin:20px 0 18px;
+  color:#f7f9ff;
+  font-size:
+    clamp(
+      40px,
+      4vw,
+      58px
+    );
+  font-weight:800;
+  line-height:1.04;
+  letter-spacing:-.045em;
+}
+
+.websiteBuildCopy p{
+  max-width:620px;
+  margin:0 0 27px;
+  color:#98a4b8;
+  font-size:15px;
+  line-height:1.75;
+}
+
+.websiteBuildVisual{
+  position:relative;
+  z-index:3;
+  min-width:0;
+  min-height:390px;
+  display:flex;
+  align-items:center;
+}
+
+.webBrowser{
+  width:100%;
+  overflow:hidden;
+  border:
+    1px solid rgba(255,255,255,.12);
+  border-radius:19px;
+  background:#070d1b;
+  box-shadow:
+    0 34px 80px rgba(0,0,0,.32);
+}
+
+.webBrowserTop{
+  min-height:45px;
+  padding:0 14px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-bottom:
+    1px solid rgba(255,255,255,.06);
+}
+
+.webBrowserTop>div{
+  display:flex;
+  gap:5px;
+}
+
+.webBrowserTop i{
+  width:6px;
+  height:6px;
+  display:block;
+  border-radius:50%;
+  background:
+    rgba(255,255,255,.18);
+}
+
+.webBrowserTop span{
+  color:#66738a;
+  font-size:8px;
+  font-weight:800;
+  letter-spacing:.12em;
+}
+
+.webBrowserCanvas{
+  min-height:290px;
+  padding:20px;
+  background:
+    radial-gradient(
+      circle at 75% 30%,
+      rgba(37,99,235,.18),
+      transparent 35%
+    ),
+    #080f20;
+}
+
+.webPreviewNav{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.webPreviewNav .konaraMark{
+  width:24px;
+  height:24px;
+  border-radius:7px;
+  font-size:9px;
+}
+
+.webPreviewNav .konaraWord{
+  font-size:7px;
+}
+
+.webPreviewNav>span{
+  width:62px;
+  height:8px;
+  border-radius:999px;
+  background:
+    rgba(255,255,255,.08);
+}
+
+.webPreviewHero{
+  min-height:175px;
+  display:grid;
+  grid-template-columns:
+    1fr
+    120px;
+  align-items:center;
+  gap:25px;
+}
+
+.webPreviewHero>div:first-child{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+}
+
+.webPreviewHero>div:first-child>span{
+  width:67px;
+  height:6px;
+  margin-bottom:12px;
+  border-radius:999px;
+  background:#3978ef;
+}
+
+.webPreviewHero strong{
+  width:78%;
+  height:15px;
+  margin-bottom:8px;
+  display:block;
+  border-radius:4px;
+  background:
+    rgba(255,255,255,.89);
+}
+
+.webPreviewHero strong:nth-of-type(2){
+  width:57%;
+  opacity:.7;
+}
+
+.webPreviewHero p{
+  width:68%;
+  height:6px;
+  margin:11px 0 0;
+  border-radius:999px;
+  background:
+    rgba(255,255,255,.11);
+}
+
+.webPreviewGraphic{
+  width:110px;
+  height:110px;
+  display:grid;
+  place-items:center;
+  border:
+    1px solid rgba(80,139,255,.45);
+  border-radius:30px;
+  background:
+    rgba(37,99,235,.11);
+  color:#7ba7ff;
+  font-size:31px;
+  font-weight:800;
+}
+
+.webPreviewCards{
+  display:grid;
+  grid-template-columns:
+    repeat(
+      3,
+      minmax(0,1fr)
+    );
+  gap:8px;
+}
+
+.webPreviewCards span{
+  min-height:51px;
+  border:
+    1px solid rgba(255,255,255,.06);
+  border-radius:9px;
+  background:
+    rgba(255,255,255,.025);
+}
+
+.webMobilePreview{
+  position:absolute;
+  z-index:5;
+  right:-22px;
+  bottom:-6px;
+  width:112px;
+  height:205px;
+  padding:13px 10px;
+  overflow:hidden;
+  border:
+    1px solid rgba(114,156,245,.3);
+  border-radius:24px;
+  background:#080e1d;
+  box-shadow:
+    0 25px 55px rgba(0,0,0,.45);
+}
+
+.webMobilePreview>div{
+  width:33px;
+  height:33px;
+  margin-bottom:25px;
+  display:grid;
+  place-items:center;
+  border:
+    1px solid rgba(77,136,255,.45);
+  border-radius:10px;
+  background:
+    rgba(37,99,235,.1);
+  color:#74a0ff;
+  font-size:12px;
+  font-weight:800;
+}
+
+.webMobilePreview span{
+  width:80%;
+  height:8px;
+  margin-bottom:7px;
+  display:block;
+  border-radius:4px;
+  background:
+    rgba(255,255,255,.82);
+}
+
+.webMobilePreview span:nth-of-type(2){
+  width:57%;
+  opacity:.5;
+}
+
+.webMobilePreview i{
+  width:100%;
+  height:57px;
+  margin-top:17px;
+  display:block;
+  border-radius:11px;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(37,99,235,.18),
+      rgba(255,255,255,.025)
+    );
+}
+
+/* ============================================================
+   RTL MARKET / LANGUAGE MENU FIX
+   ============================================================ */
+
+/*
+   The control layout stays LTR so flags, ISO codes and arrows
+   remain in stable positions. Text inside each row can still
+   resolve its own direction automatically.
+*/
+
+.market,
+.marketTrigger,
+.marketMenu{
+  direction:ltr;
+}
+
+.marketMenu{
+  isolation:isolate;
+}
+
+.marketMenuTop strong,
+.rowCopy strong,
+.rowCopy small,
+.languageRow span,
+.chooseLanguageButton strong,
+.chooseLanguageButton small{
+  unicode-bidi:plaintext;
+}
+
+html[dir="rtl"] .market,
+html[dir="rtl"] .marketTrigger{
+  direction:ltr;
+}
+
+html[dir="rtl"] .marketMenu{
+  right:auto;
+  left:0;
+  direction:ltr;
+  text-align:left;
+}
+
+html[dir="rtl"] .marketRow,
+html[dir="rtl"] .languageRow,
+html[dir="rtl"] .chooseLanguageButton{
+  direction:ltr;
+  text-align:left;
+}
+
+html[dir="rtl"] .rowCopy,
+html[dir="rtl"] .languageRow span,
+html[dir="rtl"] .chooseLanguageButton>span:nth-child(2){
+  min-width:0;
+}
+
+html[dir="rtl"] .marketMenuTop strong,
+html[dir="rtl"] .rowCopy strong,
+html[dir="rtl"] .rowCopy small,
+html[dir="rtl"] .languageRow span,
+html[dir="rtl"] .chooseLanguageButton strong,
+html[dir="rtl"] .chooseLanguageButton small{
+  text-align:start;
+}
+
+html[dir="rtl"] .founderButton{
+  unicode-bidi:plaintext;
+}
+
+/* ============================================================
+   MOBILE WEBSITE + RTL SELECTOR
+   ============================================================ */
+
+@media(max-width:767px){
+
+  /*
+     Fixed positioning keeps the selector completely inside a
+     narrow phone viewport regardless of LTR/RTL page direction.
+  */
+
+  .marketMenu,
+  html[dir="rtl"] .marketMenu{
+    position:fixed;
+    z-index:9000;
+    top:76px;
+    left:12px;
+    right:12px;
+    width:auto;
+    max-width:none;
+    max-height:calc(100dvh - 92px);
+    direction:ltr;
+    transform-origin:top center;
+  }
+
+  .marketScroll{
+    max-height:calc(100dvh - 230px);
+  }
+
+  .websiteBuildPanel{
+    padding:30px 20px;
+    grid-template-columns:1fr;
+    gap:42px;
+  }
+
+  .websiteBuildCopy h2{
+    font-size:
+      clamp(
+        34px,
+        9.5vw,
+        44px
+      );
+  }
+
+  .websiteBuildCopy p{
+    font-size:14px;
+  }
+
+  .websiteBuildCopy .primaryButton{
+    width:100%;
+  }
+
+  .websiteBuildVisual{
+    min-height:300px;
+    padding-right:15px;
+  }
+
+  .webBrowserCanvas{
+    min-height:230px;
+    padding:14px;
+  }
+
+  .webPreviewHero{
+    min-height:145px;
+    grid-template-columns:
+      1fr
+      76px;
+    gap:13px;
+  }
+
+  .webPreviewGraphic{
+    width:72px;
+    height:72px;
+    border-radius:21px;
+    font-size:22px;
+  }
+
+  .webMobilePreview{
+    right:-7px;
+    bottom:-12px;
+    width:91px;
+    height:170px;
+  }
+}
+
+/* ============================================================
+   TABLET WEBSITE SECTION
+   ============================================================ */
+
+@media(min-width:768px) and (max-width:1199px){
+
+  .websiteBuildPanel{
+    padding:44px;
+    grid-template-columns:1fr;
+    gap:50px;
+  }
+
+  .websiteBuildVisual{
+    width:min(
+      760px,
+      100%
+    );
   }
 }
 `;
