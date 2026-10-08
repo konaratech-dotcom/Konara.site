@@ -1,0 +1,749 @@
+
+/* ============================================================
+   KONARA — PREMIUM 33-LANGUAGE LAYOUT SAFETY
+   Covers:
+   en de fr nl es pt it pl cs sk hu ro bg el tr sv no da fi uk
+   ar hi ur bn ms id tl ja ko zh-CN zh-TW th vi
+   ============================================================ */
+
+/* ---------- universal text/grid safety ---------- */
+
+html[lang] .site-shell main *,
+html[lang] .konara-nara-panel *,
+html[lang] .site-footer * {
+  min-width: 0;
+}
+
+html[lang] .site-shell main :is(
+  h1, h2, h3, h4, p, li, label, small, strong, a, button
+),
+html[lang] .konara-nara-panel :is(
+  h3, p, small, strong, button
+),
+html[lang] .site-footer :is(
+  p, small, strong, a, span
+) {
+  max-width: 100%;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
+html[lang] .site-shell main :is(h1, h2, h3),
+html[lang] .konara-nara-panel h3 {
+  text-wrap: balance;
+}
+
+html[lang] .site-shell main :is(p, li),
+html[lang] .konara-nara-panel :is(p, small) {
+  text-wrap: pretty;
+}
+
+/* Grid/flex children containing translated copy must be allowed to shrink. */
+html[lang] :is(
+  .premium-hero-copy,
+  .light-intro-copy,
+  .web-copy,
+  .os-copy,
+  .carousel-product-copy,
+  .solutions-hero-copy,
+  .product-row-copy,
+  .journey-copy,
+  .solutions-web-copy,
+  .services-hero-copy,
+  .service-row-copy,
+  .services-system-copy,
+  .services-light-copy,
+  .website-hero-copy,
+  .website-responsive-copy,
+  .project-placeholder-copy,
+  .about-hero-copy,
+  .about-idea-copy,
+  .about-nara-copy,
+  .about-light-copy,
+  .about-vision-copy,
+  .contact-hero-copy,
+  .contact-form-intro,
+  .contact-nara-copy,
+  .footer-brand-block,
+  .footer-column,
+  .konara-nara-action > span
+) {
+  min-width: 0 !important;
+  max-width: 100%;
+}
+
+/* ---------- cards / boxes ---------- */
+
+html[lang] :is(
+  .premium-service-card,
+  .process-item,
+  .product-carousel-card,
+  .solutions-product-row,
+  .product-row-grid,
+  .journey-step,
+  .service-row,
+  .service-row-grid,
+  .services-process-item,
+  .system-flow-item,
+  .website-type-card,
+  .website-process-item,
+  .website-project-placeholder,
+  .about-principle-card,
+  .contact-info-item,
+  .contact-form-card,
+  .contact-next-step,
+  .legal-card
+) :is(h2, h3, h4, p, small, strong, span, a, button) {
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+
+/* Textual buttons must grow rather than clip translations. */
+html[lang] :is(
+  .button,
+  .dark-button,
+  .mobile-button,
+  .mock-button,
+  .responsive-button,
+  .responsive-device-button,
+  .type-screen-button,
+  .website-phone-button,
+  .services-web-button,
+  .contact-submit-button,
+  .legal-link
+) {
+  height: auto !important;
+  min-height: 44px;
+  white-space: normal !important;
+  line-height: 1.25;
+  text-align: center;
+  overflow-wrap: break-word;
+}
+
+/* Tags/pills may widen/wrap gracefully instead of clipping. */
+html[lang] :is(
+  .contact-nara-tags span,
+  .responsive-badges span,
+  .website-floating-tag,
+  .dashboard-pill,
+  .ai-badge,
+  .hero-top-label,
+  .carousel-product-meta,
+  .product-row-category,
+  .services-kicker,
+  .solutions-kicker,
+  .website-kicker,
+  .about-kicker,
+  .contact-kicker
+) {
+  max-width: 100%;
+  white-space: normal !important;
+  line-height: 1.25;
+  overflow-wrap: break-word;
+}
+
+/* ---------- mockups / small UI boxes ---------- */
+
+html[lang] :is(
+  .mock-heading,
+  .browser-hero,
+  .dashboard-heading,
+  .mobile-heading,
+  .responsive-heading,
+  .responsive-device-heading,
+  .type-screen-heading,
+  .website-phone-title,
+  .project-placeholder-copy,
+  .visual-data-card,
+  .service-row-points,
+  .product-row-capabilities
+) {
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+
+html[lang] :is(
+  .mock-heading,
+  .browser-hero,
+  .mobile-heading,
+  .responsive-heading,
+  .responsive-device-heading,
+  .type-screen-heading,
+  .website-phone-title
+) {
+  white-space: normal !important;
+  line-height: 1.08;
+}
+
+/* ---------- NARA ---------- */
+
+html[lang] .konara-nara-action {
+  height: auto !important;
+  min-height: 68px;
+}
+
+html[lang] .konara-nara-action strong,
+html[lang] .konara-nara-action small {
+  max-width: 100% !important;
+  white-space: normal !important;
+  overflow-wrap: break-word;
+}
+
+html[lang] .konara-nara-action small {
+  line-height: 1.48;
+}
+
+html[lang] .konara-nara-panel-footer {
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr);
+}
+
+html[lang] .konara-nara-panel-footer button {
+  height: auto !important;
+  min-height: 44px;
+  padding-top: 9px;
+  padding-bottom: 9px;
+  white-space: normal !important;
+  line-height: 1.25;
+  overflow-wrap: break-word;
+}
+
+html[lang] .konara-nara-info-buttons .primary {
+  gap: 10px;
+  text-align: start;
+}
+
+html[lang] .konara-nara-hint {
+  max-width: 190px;
+  white-space: normal !important;
+  text-align: center;
+  line-height: 1.25;
+}
+
+/* ---------- footer ---------- */
+
+html[lang] .footer-main {
+  grid-auto-rows: minmax(min-content, auto);
+}
+
+html[lang] .footer-column a,
+html[lang] .footer-tagline,
+html[lang] .footer-meta-row,
+html[lang] .footer-bottom-copy {
+  overflow-wrap: break-word;
+}
+
+/* ---------- desktop navigation ---------- */
+
+@media (min-width: 981px) {
+  html[lang] .konara-navbar-link,
+  html[lang] .konara-navbar-demo {
+    white-space: nowrap !important;
+  }
+
+  html:is(
+    :lang(de), :lang(fr), :lang(nl), :lang(es), :lang(pt), :lang(it),
+    :lang(pl), :lang(cs), :lang(sk), :lang(hu), :lang(ro), :lang(bg),
+    :lang(el), :lang(tr), :lang(sv), :lang(no), :lang(da), :lang(fi),
+    :lang(uk), :lang(hi), :lang(ur), :lang(bn), :lang(ms), :lang(id),
+    :lang(tl), :lang(th), :lang(vi)
+  ) .konara-navbar-desktop {
+    gap: clamp(14px, 1.55vw, 22px) !important;
+  }
+
+  html:is(
+    :lang(de), :lang(fr), :lang(nl), :lang(pl), :lang(cs), :lang(sk),
+    :lang(hu), :lang(ro), :lang(bg), :lang(el), :lang(tr), :lang(fi),
+    :lang(uk), :lang(vi)
+  ) .konara-navbar-link {
+    font-size: 12.5px !important;
+  }
+
+  html:is(
+    :lang(de), :lang(fr), :lang(nl), :lang(pl), :lang(cs), :lang(sk),
+    :lang(hu), :lang(ro), :lang(bg), :lang(el), :lang(tr), :lang(fi),
+    :lang(uk), :lang(vi)
+  ) .konara-navbar-demo {
+    padding-inline: 12px !important;
+    font-size: 12px !important;
+  }
+}
+
+/* ---------- hero typography: strongest expansion languages ---------- */
+
+html:is(
+  :lang(de), :lang(nl), :lang(pl), :lang(hu), :lang(fi),
+  :lang(el), :lang(uk), :lang(vi)
+) :is(
+  .premium-hero-copy h1,
+  .solutions-hero h1,
+  .services-hero h1,
+  .website-hero h1,
+  .about-hero h1,
+  .contact-hero h1
+) {
+  font-size: clamp(50px, 5.15vw, 82px) !important;
+  line-height: .96 !important;
+  letter-spacing: -.055em !important;
+  hyphens: auto;
+}
+
+/* ---------- hero typography: medium expansion languages ---------- */
+
+html:is(
+  :lang(fr), :lang(es), :lang(pt), :lang(it), :lang(cs), :lang(sk),
+  :lang(ro), :lang(bg), :lang(tr), :lang(sv), :lang(no), :lang(da),
+  :lang(hi), :lang(bn), :lang(ms), :lang(id), :lang(tl), :lang(th)
+) :is(
+  .premium-hero-copy h1,
+  .solutions-hero h1,
+  .services-hero h1,
+  .website-hero h1,
+  .about-hero h1,
+  .contact-hero h1
+) {
+  font-size: clamp(52px, 5.5vw, 88px) !important;
+  line-height: .97 !important;
+  letter-spacing: -.052em !important;
+}
+
+/* ---------- CJK ---------- */
+
+html:is(:lang(ja), :lang(ko), :lang(zh-CN), :lang(zh-TW)) :is(
+  .premium-hero-copy h1,
+  .solutions-hero h1,
+  .services-hero h1,
+  .website-hero h1,
+  .about-hero h1,
+  .contact-hero h1
+) {
+  font-size: clamp(54px, 5.8vw, 92px) !important;
+  line-height: 1.03 !important;
+  letter-spacing: -.035em !important;
+}
+
+html:is(:lang(ja), :lang(ko), :lang(zh-CN), :lang(zh-TW)) :is(
+  .section-eyebrow,
+  .dark-eyebrow,
+  .solutions-kicker,
+  .services-kicker,
+  .website-kicker,
+  .about-kicker,
+  .contact-kicker,
+  .konara-nara-status
+) {
+  letter-spacing: .055em !important;
+}
+
+/* ---------- Arabic / Urdu RTL ---------- */
+
+html:is(:lang(ar), :lang(ur)) :is(
+  .premium-hero-copy h1,
+  .solutions-hero h1,
+  .services-hero h1,
+  .website-hero h1,
+  .about-hero h1,
+  .contact-hero h1
+) {
+  font-size: clamp(50px, 5.4vw, 86px) !important;
+  line-height: 1.08 !important;
+  letter-spacing: -.02em !important;
+}
+
+html[dir="rtl"] :is(
+  .premium-hero-copy,
+  .light-intro-copy,
+  .web-copy,
+  .os-copy,
+  .carousel-product-copy,
+  .solutions-hero-copy,
+  .product-row-copy,
+  .journey-copy,
+  .solutions-web-copy,
+  .services-hero-copy,
+  .service-row-copy,
+  .services-system-copy,
+  .services-light-copy,
+  .website-hero-copy,
+  .website-responsive-copy,
+  .about-hero-copy,
+  .about-idea-copy,
+  .about-nara-copy,
+  .about-light-copy,
+  .about-vision-copy,
+  .contact-hero-copy,
+  .contact-form-intro,
+  .contact-nara-copy,
+  .konara-nara-action,
+  .konara-nara-info,
+  .footer-column
+) {
+  text-align: start !important;
+}
+
+html[dir="rtl"] :is(
+  .section-eyebrow,
+  .dark-eyebrow,
+  .solutions-kicker,
+  .services-kicker,
+  .website-kicker,
+  .about-kicker,
+  .contact-kicker,
+  .konara-nara-status,
+  .footer-column-title
+) {
+  letter-spacing: .025em !important;
+}
+
+html[dir="rtl"] :is(input, textarea, select) {
+  text-align: start;
+}
+
+html[dir="rtl"] .konara-nara-action b,
+html[dir="rtl"] .konara-mobile-link-arrow,
+html[dir="rtl"] .legal-link span,
+html[dir="rtl"] .footer-inline-demo span {
+  transform: scaleX(-1);
+}
+
+html[dir="rtl"] .konara-nara-panel-footer button:first-child b {
+  margin-left: 0;
+  margin-right: auto;
+  transform: scaleX(-1);
+}
+
+/* ---------- long-language section headings ---------- */
+
+html:is(
+  :lang(de), :lang(nl), :lang(pl), :lang(hu), :lang(fi),
+  :lang(el), :lang(uk), :lang(vi)
+) .site-shell main h2 {
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+/* ---------- smaller viewports ---------- */
+
+@media (max-width: 760px) {
+  html:not(:lang(en)) :is(
+    .premium-hero-copy h1,
+    .solutions-hero h1,
+    .services-hero h1,
+    .website-hero h1,
+    .about-hero h1,
+    .contact-hero h1
+  ) {
+    font-size: clamp(42px, 12vw, 64px) !important;
+    line-height: .98 !important;
+  }
+
+  html:is(:lang(ar), :lang(ur)) :is(
+    .premium-hero-copy h1,
+    .solutions-hero h1,
+    .services-hero h1,
+    .website-hero h1,
+    .about-hero h1,
+    .contact-hero h1
+  ) {
+    line-height: 1.08 !important;
+  }
+
+  html[lang] .konara-nara-panel-footer {
+    grid-template-columns: 1fr !important;
+  }
+
+  html[lang] .contact-nara-tags {
+    align-items: stretch;
+  }
+
+  html[lang] .contact-nara-tags span {
+    width: fit-content;
+    max-width: 100%;
+  }
+}
+
+/* ---------- medium / tablet ---------- */
+
+@media (min-width: 761px) and (max-width: 1180px) {
+  html:not(:lang(en)) :is(
+    .premium-hero-copy h1,
+    .solutions-hero h1,
+    .services-hero h1,
+    .website-hero h1,
+    .about-hero h1,
+    .contact-hero h1
+  ) {
+    max-width: 100%;
+  }
+
+  html:is(
+    :lang(de), :lang(nl), :lang(pl), :lang(hu), :lang(fi),
+    :lang(el), :lang(uk), :lang(vi)
+  ) :is(
+    .premium-hero-copy h1,
+    .solutions-hero h1,
+    .services-hero h1,
+    .website-hero h1,
+    .about-hero h1,
+    .contact-hero h1
+  ) {
+    font-size: clamp(48px, 5.9vw, 72px) !important;
+  }
+}
+
+/* ---------- NARA panel expansion languages ---------- */
+
+@media (min-width: 768px) {
+  html:is(
+    :lang(de), :lang(fr), :lang(nl), :lang(es), :lang(pt), :lang(it),
+    :lang(pl), :lang(cs), :lang(sk), :lang(hu), :lang(ro), :lang(bg),
+    :lang(el), :lang(tr), :lang(sv), :lang(no), :lang(da), :lang(fi),
+    :lang(uk), :lang(ar), :lang(hi), :lang(ur), :lang(bn), :lang(ms),
+    :lang(id), :lang(tl), :lang(th), :lang(vi)
+  ) .konara-nara-panel {
+    width: min(400px, calc(100vw - 40px)) !important;
+  }
+}
+
+/* End of KONARA 33-language premium layer */
+
+/* KONARA ALL-BOX 33-LANGUAGE PREMIUM SAFETY START */
+
+/*
+  Rule 1: translated content is allowed to shrink inside grid/flex boxes.
+  This prevents one translated child from widening or shifting its parent.
+*/
+html[lang] :is(
+  .dashboard-sidebar,
+  .dashboard-main,
+  .dashboard-heading,
+  .dashboard-metrics,
+  .dashboard-lower,
+  .metric-card,
+  .dashboard-chart-card,
+  .dashboard-ai-card,
+  .premium-service-card,
+  .process-item,
+  .product-carousel-card,
+  .solutions-product-row,
+  .product-row-grid,
+  .journey-step,
+  .service-row,
+  .service-row-grid,
+  .services-process-item,
+  .system-flow-item,
+  .website-type-card,
+  .website-process-item,
+  .website-project-placeholder,
+  .about-principle-card,
+  .contact-info-item,
+  .contact-form-card,
+  .contact-next-step,
+  .konara-nara-action,
+  .legal-card,
+  .footer-column
+) {
+  min-width: 0 !important;
+  box-sizing: border-box;
+}
+
+/*
+  Rule 2: visible text inside every known content box wraps cleanly instead
+  of clipping, overflowing, or changing the box width.
+*/
+html[lang] :is(
+  .dashboard-sidebar,
+  .dashboard-main,
+  .metric-card,
+  .dashboard-chart-card,
+  .dashboard-ai-card,
+  .premium-service-card,
+  .process-item,
+  .product-carousel-card,
+  .solutions-product-row,
+  .journey-step,
+  .service-row,
+  .services-process-item,
+  .system-flow-item,
+  .website-type-card,
+  .website-process-item,
+  .website-project-placeholder,
+  .about-principle-card,
+  .contact-info-item,
+  .contact-form-card,
+  .contact-next-step,
+  .konara-nara-action,
+  .legal-card,
+  .footer-column
+) :is(h2, h3, h4, p, span, small, strong, a, button, label) {
+  max-width: 100%;
+  min-width: 0;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
+/*
+  Rule 3: the four dashboard sidebar rows are geometrically identical in
+  every language. The active state only changes appearance, never size.
+*/
+html[lang] .dashboard-sidebar .sidebar-item {
+  width: 100%;
+  height: 46px !important;
+  min-height: 46px !important;
+  max-height: 46px !important;
+
+  display: grid !important;
+  grid-template-columns: 12px minmax(0, 1fr);
+  align-items: center;
+
+  gap: 10px;
+  padding: 0 13px !important;
+
+  box-sizing: border-box;
+  border-width: 1px;
+  border-style: solid;
+  line-height: 1;
+}
+
+html[lang] .dashboard-sidebar .sidebar-item:not(.active) {
+  border-color: transparent !important;
+}
+
+html[lang] .dashboard-sidebar .sidebar-icon {
+  width: 9px !important;
+  height: 9px !important;
+  min-width: 9px !important;
+  min-height: 9px !important;
+  margin: 0 !important;
+}
+
+html[lang] .dashboard-sidebar .sidebar-label {
+  min-width: 0;
+  max-width: 100%;
+
+  display: block;
+
+  margin: 0;
+  padding: 0;
+
+  font-size: clamp(8.7px, 0.76vw, 10.7px);
+  font-weight: 680;
+  line-height: 1.08;
+
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+
+/* Expansion-heavy languages get slightly denser labels, not bigger boxes. */
+html:is(
+  :lang(de), :lang(fr), :lang(nl), :lang(es), :lang(pt), :lang(it),
+  :lang(pl), :lang(cs), :lang(sk), :lang(hu), :lang(ro), :lang(bg),
+  :lang(el), :lang(tr), :lang(sv), :lang(no), :lang(da), :lang(fi),
+  :lang(uk), :lang(ms), :lang(id), :lang(tl), :lang(th), :lang(vi)
+) .dashboard-sidebar .sidebar-label {
+  font-size: clamp(8px, 0.71vw, 9.9px);
+}
+
+/* CJK scripts are compact horizontally but need a touch more line height. */
+html:is(
+  :lang(ja), :lang(ko), :lang(zh-CN), :lang(zh-TW)
+) .dashboard-sidebar .sidebar-label {
+  font-size: clamp(8.8px, 0.76vw, 10.5px);
+  line-height: 1.16;
+}
+
+/* RTL layout is mirrored without changing row geometry. */
+html[dir="rtl"] .dashboard-sidebar .sidebar-item {
+  grid-template-columns: minmax(0, 1fr) 12px;
+}
+
+html[dir="rtl"] .dashboard-sidebar .sidebar-label {
+  grid-column: 1;
+  grid-row: 1;
+  text-align: start;
+}
+
+html[dir="rtl"] .dashboard-sidebar .sidebar-icon {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+/*
+  Rule 4: buttons/tags inside translated boxes expand vertically rather than
+  clipping text. Their width remains controlled by the existing layout.
+*/
+html[lang] :is(
+  .button,
+  .dark-button,
+  .mobile-button,
+  .mock-button,
+  .responsive-button,
+  .responsive-device-button,
+  .type-screen-button,
+  .website-phone-button,
+  .services-web-button,
+  .contact-submit-button,
+  .konara-nara-panel-footer button,
+  .legal-link
+) {
+  height: auto !important;
+  min-height: 44px;
+  white-space: normal !important;
+  line-height: 1.22;
+  text-align: center;
+}
+
+/*
+  Rule 5: pills and badges stay visually contained even with longer copy.
+*/
+html[lang] :is(
+  .dashboard-pill,
+  .ai-badge,
+  .contact-nara-tags span,
+  .responsive-badges span,
+  .website-floating-tag,
+  .hero-top-label,
+  .carousel-product-meta,
+  .product-row-category,
+  .solutions-kicker,
+  .services-kicker,
+  .website-kicker,
+  .about-kicker,
+  .contact-kicker
+) {
+  max-width: 100%;
+  white-space: normal !important;
+  line-height: 1.2;
+  overflow-wrap: break-word;
+}
+
+/* Long-word languages may hyphenate inside headings rather than overflow. */
+html:is(
+  :lang(de), :lang(nl), :lang(pl), :lang(hu), :lang(fi),
+  :lang(el), :lang(uk), :lang(vi)
+) :is(
+  .site-shell main h1,
+  .site-shell main h2,
+  .site-shell main h3
+) {
+  hyphens: auto;
+  overflow-wrap: break-word;
+}
+
+/* Mobile: translated box content must never force horizontal page overflow. */
+@media (max-width: 760px) {
+  html[lang] .site-shell main,
+  html[lang] .site-shell main > *,
+  html[lang] .konara-nara-panel,
+  html[lang] .site-footer {
+    max-width: 100%;
+  }
+
+  html[lang] .dashboard-sidebar .sidebar-item {
+    min-height: 44px !important;
+    height: 44px !important;
+    max-height: 44px !important;
+  }
+}
+
+/* KONARA ALL-BOX 33-LANGUAGE PREMIUM SAFETY END */

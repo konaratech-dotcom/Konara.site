@@ -1,0 +1,41 @@
+/* KONARA CUSTOM CURSOR — FINAL CLEAN */
+@media (hover: hover) and (pointer: fine) {
+  html.konara-custom-cursor-enabled,
+  html.konara-custom-cursor-enabled * { cursor: none !important; }
+}
+
+.konara-cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2147483647;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  background: #fff;
+  box-shadow: 0 0 6px rgba(255,255,255,.65), 0 0 14px rgba(190,220,255,.2);
+  will-change: transform;
+  transition: opacity .1s ease, width .14s ease, height .14s ease, background .12s ease, box-shadow .12s ease;
+}
+.konara-cursor-dot.konara-cursor-visible { opacity: 1; }
+.konara-cursor-dot.konara-cursor-active { width: 10px; height: 10px; }
+.konara-cursor-dot.konara-cursor-blue {
+  background: #2563eb;
+  box-shadow: 0 0 0 4px rgba(37,99,235,.14), 0 0 10px rgba(37,99,235,.9), 0 0 22px rgba(37,99,235,.44);
+}
+.konara-cursor-dot.konara-cursor-blue.konara-cursor-active {
+  box-shadow: 0 0 0 5px rgba(37,99,235,.15), 0 0 12px rgba(37,99,235,.96), 0 0 28px rgba(37,99,235,.5);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  html.konara-custom-cursor-enabled .konara-nara-dock,
+  html.konara-custom-cursor-enabled .konara-nara-dock *,
+  html.konara-custom-cursor-enabled .konara-vf-close,
+  html.konara-custom-cursor-enabled .konara-vf-close * { cursor: none !important; }
+}
+
+@media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .konara-cursor-dot { display: none !important; }
+}
