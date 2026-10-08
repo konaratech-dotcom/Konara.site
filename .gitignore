@@ -22,3 +22,18 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# KONARA production secrets
+.env
+.env.local
+.env.production
+.env.*.local
+!.env.example
+
+.vercel
+.env*
+
+# Local KONARA backups
+.konara-backups/
+konara-current-snapshot.txt
+old-konara-app.tsx
