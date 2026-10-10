@@ -3,6 +3,14 @@
   "framework": "vite",
   "rewrites": [
     {
+      "source": "/security",
+      "destination": "/security.html"
+    },
+    {
+      "source": "/security/",
+      "destination": "/security.html"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
